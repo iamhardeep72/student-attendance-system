@@ -1,0 +1,429 @@
+:root {
+  --ink: #172026;
+  --muted: #687681;
+  --line: #d9e1e7;
+  --surface: #ffffff;
+  --page: #f4f7f9;
+  --accent: #087f8c;
+  --accent-dark: #075f68;
+  --gold: #d99a25;
+  --danger: #c2413a;
+  --success: #2f855a;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  min-height: 40px;
+  padding: 0 14px;
+}
+
+button:hover {
+  background: var(--accent-dark);
+}
+
+input,
+select {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0 12px;
+  background: white;
+  color: var(--ink);
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #10242b;
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #47c2b1;
+  color: #10242b;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.brand strong,
+.brand small {
+  display: block;
+}
+
+.brand small,
+.auth-card p {
+  color: #b8c8cf;
+}
+
+.nav-list {
+  display: grid;
+  gap: 8px;
+}
+
+.nav-item {
+  background: transparent;
+  color: #d8e8ee;
+  text-align: left;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: #1c3a43;
+}
+
+.auth-card {
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+}
+
+.auth-card input {
+  width: 100%;
+}
+
+.auth-card p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.content {
+  padding: 28px;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.session-pill {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: grid;
+  gap: 2px;
+  min-width: 160px;
+}
+
+.session-pill span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.metrics-grid,
+.dashboard-grid,
+.checkin-grid,
+.cloud-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.metrics-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.dashboard-grid,
+.checkin-grid {
+  grid-template-columns: 1.3fr 1fr;
+}
+
+.cloud-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric,
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.metric {
+  padding: 18px;
+}
+
+.metric span {
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.metric strong {
+  font-size: 30px;
+}
+
+.panel {
+  padding: 18px;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.toolbar,
+.inline-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.attendance-chart {
+  display: grid;
+  gap: 12px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 42px;
+  gap: 10px;
+  align-items: center;
+}
+
+.bar-track {
+  height: 14px;
+  background: #edf2f5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--accent);
+}
+
+.bar-fill.late {
+  background: var(--gold);
+}
+
+.bar-fill.absent {
+  background: var(--danger);
+}
+
+.activity-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.activity-list li {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 760px;
+}
+
+th,
+td {
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 10px;
+}
+
+th {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.status {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 13px;
+  color: white;
+}
+
+.status.Present {
+  background: var(--success);
+}
+
+.status.Late {
+  background: var(--gold);
+}
+
+.status.Absent {
+  background: var(--danger);
+}
+
+.status.Excused {
+  background: #65758b;
+}
+
+.qr-card {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 18px;
+  background:
+    linear-gradient(90deg, #111 12px, transparent 12px) 0 0 / 28px 28px,
+    linear-gradient(#111 12px, transparent 12px) 0 0 / 28px 28px,
+    white;
+  border: 12px solid white;
+  box-shadow: inset 0 0 0 1px var(--line), 0 8px 30px rgba(16, 36, 43, 0.12);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.face-box {
+  min-height: 220px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  background: #f8fbfc;
+  color: var(--muted);
+}
+
+.face-ring {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 8px solid #47c2b1;
+  box-shadow: 0 0 0 14px rgba(71, 194, 177, 0.15);
+}
+
+.tag {
+  color: var(--accent);
+  border: 1px solid #a8ddd5;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.report-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.report-card {
+  background: #f8fbfc;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.cloud-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .metrics-grid,
+  .dashboard-grid,
+  .checkin-grid,
+  .cloud-grid,
+  .report-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .panel-head,
+  .toolbar,
+  .inline-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+

@@ -1,0 +1,45 @@
+{
+  "collections": {
+    "users": {
+      "userId": "string",
+      "email": "string",
+      "role": "admin | teacher | student",
+      "createdAt": "timestamp"
+    },
+    "students": {
+      "studentId": "string",
+      "rollNo": "string",
+      "name": "string",
+      "className": "string",
+      "guardianPhone": "string",
+      "guardianEmail": "string",
+      "faceProfileUrl": "string"
+    },
+    "attendanceSessions": {
+      "sessionId": "string",
+      "className": "string",
+      "qrTokenHash": "string",
+      "startsAt": "timestamp",
+      "expiresAt": "timestamp",
+      "createdBy": "userId"
+    },
+    "attendanceRecords": {
+      "recordId": "string",
+      "sessionId": "string",
+      "studentId": "string",
+      "status": "Present | Late | Absent | Excused",
+      "method": "QR | Face | Admin",
+      "markedAt": "timestamp",
+      "deviceId": "string"
+    },
+    "alerts": {
+      "alertId": "string",
+      "studentId": "string",
+      "channel": "SMS | Email",
+      "status": "Queued | Sent | Failed",
+      "message": "string",
+      "createdAt": "timestamp"
+    }
+  }
+}
+

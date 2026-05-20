@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Attendance System on Cloud</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <span class="brand-mark">SA</span>
+          <div>
+            <strong>SmartAttend</strong>
+            <small>Cloud Dashboard</small>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="dashboard">Dashboard</button>
+          <button class="nav-item" data-view="students">Students</button>
+          <button class="nav-item" data-view="checkin">QR / Face Check-in</button>
+          <button class="nav-item" data-view="reports">Reports</button>
+          <button class="nav-item" data-view="cloud">Cloud Design</button>
+        </nav>
+
+        <section class="auth-card" aria-label="Mock authentication">
+          <label for="email">Signed in as</label>
+          <input id="email" value="admin@smartcampus.edu" />
+          <button id="signInButton">Authenticate</button>
+          <p id="authStatus">Auth provider: local demo token</p>
+        </section>
+      </aside>
+
+      <section class="content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Cloud attendance system</p>
+            <h1 id="pageTitle">Admin Dashboard</h1>
+          </div>
+          <div class="session-pill">
+            <span>Session Code</span>
+            <strong id="sessionCode">CS-4829</strong>
+          </div>
+        </header>
+
+        <section id="dashboard" class="view active">
+          <div class="metrics-grid">
+            <article class="metric">
+              <span>Total Students</span>
+              <strong id="totalStudents">0</strong>
+            </article>
+            <article class="metric">
+              <span>Present Today</span>
+              <strong id="presentToday">0</strong>
+            </article>
+            <article class="metric">
+              <span>Late</span>
+              <strong id="lateToday">0</strong>
+            </article>
+            <article class="metric">
+              <span>Attendance Rate</span>
+              <strong id="attendanceRate">0%</strong>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Live Attendance</h2>
+                <button id="newSessionButton">New QR Code</button>
+              </div>
+              <div class="attendance-chart" id="attendanceChart" aria-label="Attendance status chart"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Recent Activity</h2>
+                <button id="clearActivityButton">Clear</button>
+              </div>
+              <ul class="activity-list" id="activityList"></ul>
+            </section>
+          </div>
+        </section>
+
+        <section id="students" class="view">
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Student Attendance Tracking</h2>
+              <div class="toolbar">
+                <input id="studentSearch" placeholder="Search student" />
+                <select id="statusFilter" aria-label="Filter by status">
+                  <option value="all">All</option>
+                  <option value="Present">Present</option>
+                  <option value="Late">Late</option>
+                  <option value="Absent">Absent</option>
+                  <option value="Excused">Excused</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Status</th>
+                    <th>Method</th>
+                    <th>Last Check-in</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="studentTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="checkin" class="view">
+          <div class="checkin-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>QR Attendance</h2>
+                <button id="refreshQrButton">Refresh</button>
+              </div>
+              <div class="qr-card" id="qrCard" aria-label="QR session code"></div>
+              <label for="rollInput">Student roll number</label>
+              <div class="inline-form">
+                <input id="rollInput" placeholder="Example: CSE-014" />
+                <button id="qrCheckInButton">Mark via QR</button>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Face Recognition Add-on</h2>
+                <span class="tag">Prototype</span>
+              </div>
+              <div class="face-box">
+                <div class="face-ring"></div>
+                <p>Camera verification simulator</p>
+              </div>
+              <label for="faceRollInput">Student roll number</label>
+              <div class="inline-form">
+                <input id="faceRollInput" placeholder="Example: CSE-022" />
+                <button id="faceCheckInButton">Verify Face</button>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="reports" class="view">
+          <div class="panel">
+            <div class="panel-head">
+              <h2>Reports Generation</h2>
+              <div class="toolbar">
+                <select id="reportRange">
+                  <option>Today</option>
+                  <option>This Week</option>
+                  <option>This Month</option>
+                </select>
+                <button id="downloadReportButton">Download CSV</button>
+                <button id="sendAlertsButton">Send Alerts</button>
+              </div>
+            </div>
+            <div id="reportSummary" class="report-summary"></div>
+          </div>
+        </section>
+
+        <section id="cloud" class="view">
+          <div class="cloud-grid">
+            <article class="panel cloud-card">
+              <h2>Authentication</h2>
+              <p>Admins and teachers sign in through a managed identity provider. Student check-ins use signed session tokens.</p>
+            </article>
+            <article class="panel cloud-card">
+              <h2>Serverless Functions</h2>
+              <p>Attendance writes, alert delivery, and report generation run as event-driven functions.</p>
+            </article>
+            <article class="panel cloud-card">
+              <h2>Cloud Database</h2>
+              <p>Students, sessions, attendance records, and audit logs live in a managed database with role-based rules.</p>
+            </article>
+            <article class="panel cloud-card">
+              <h2>Mobile Support</h2>
+              <p>The interface adapts to phones and can be wrapped as a PWA for QR scanning and push notifications.</p>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
